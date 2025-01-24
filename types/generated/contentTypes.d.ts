@@ -437,6 +437,7 @@ export interface ApiImageImage extends Struct.CollectionTypeSchema {
 export interface ApiRestaurantRestaurant extends Struct.CollectionTypeSchema {
   collectionName: 'restaurants';
   info: {
+    description: '';
     displayName: 'Restaurant';
     pluralName: 'restaurants';
     singularName: 'restaurant';
@@ -449,6 +450,7 @@ export interface ApiRestaurantRestaurant extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::category.category'
     >;
+    Content: Schema.Attribute.RichText;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
