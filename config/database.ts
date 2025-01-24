@@ -3,7 +3,7 @@ import path from 'path';
 export default ({ env }) => {
   const client = env('DATABASE_CLIENT', 'postgres');
 
-  const connections = {
+  const connections = { 
     mysql: {
       connection: {
         host: env('DATABASE_HOST', 'localhost'),
