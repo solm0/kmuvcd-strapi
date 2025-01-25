@@ -434,6 +434,56 @@ export interface ApiImageImage extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiKmuvcdIntroductionKmuvcdIntroduction
+  extends Struct.SingleTypeSchema {
+  collectionName: 'kmuvcd_introductions';
+  info: {
+    description: '';
+    displayName: 'KMUVCD introduction';
+    pluralName: 'kmuvcd-introductions';
+    singularName: 'kmuvcd-introduction';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.RichText & Schema.Attribute.Required;
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Blocks;
+    Email: Schema.Attribute.Email;
+    endDate: Schema.Attribute.Date;
+    Enumeration: Schema.Attribute.Enumeration<
+      ['morning', 'afternoon', 'evening', 'night']
+    >;
+    JSON: Schema.Attribute.JSON;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::kmuvcd-introduction.kmuvcd-introduction'
+    > &
+      Schema.Attribute.Private;
+    Number: Schema.Attribute.Integer;
+    Password: Schema.Attribute.Password;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'>;
+    startDate: Schema.Attribute.Date;
+    tags: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    whatIsComponent: Schema.Attribute.Component<'what.component', false>;
+    yes_or_no: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+  };
+}
+
 export interface ApiRestaurantRestaurant extends Struct.CollectionTypeSchema {
   collectionName: 'restaurants';
   info: {
@@ -445,26 +495,75 @@ export interface ApiRestaurantRestaurant extends Struct.CollectionTypeSchema {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     categories: Schema.Attribute.Relation<
       'manyToMany',
       'api::category.category'
     >;
-    Content: Schema.Attribute.RichText;
+    Content: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Description: Schema.Attribute.Blocks;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    Description: Schema.Attribute.Blocks &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::restaurant.restaurant'
-    > &
-      Schema.Attribute.Private;
+    >;
     Name: Schema.Attribute.String &
       Schema.Attribute.Required &
-      Schema.Attribute.Unique;
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
+    tags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTagTag extends Struct.CollectionTypeSchema {
+  collectionName: 'tags';
+  info: {
+    displayName: 'Tag';
+    pluralName: 'tags';
+    singularName: 'tag';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    restaurants: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::restaurant.restaurant'
+    >;
+    Tag: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -982,7 +1081,9 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::category.category': ApiCategoryCategory;
       'api::image.image': ApiImageImage;
+      'api::kmuvcd-introduction.kmuvcd-introduction': ApiKmuvcdIntroductionKmuvcdIntroduction;
       'api::restaurant.restaurant': ApiRestaurantRestaurant;
+      'api::tag.tag': ApiTagTag;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
