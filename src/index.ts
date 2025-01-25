@@ -3,8 +3,7 @@ const condition = {
   name: 'can-only-assign-authors',
   async handler(user) {
     const allowedAdminRoles = ['strapi-author'];
-    const result = { code: { $in: allowedAdminRoles } };
-    return result;
+    return { code: { $in: allowedAdminRoles } };
   },
 };
 
