@@ -1,0 +1,39 @@
+{
+  "kind": "singleType",
+  "collectionName": "graduation_requirements",
+  "info": {
+    "singularName": "graduation-requirement",
+    "pluralName": "graduation-requirements",
+    "displayName": "졸업 요건",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "content": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

@@ -1,21 +1,25 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
-export interface WhatComponent extends Struct.ComponentSchema {
-  collectionName: 'components_what_components';
+export interface EventEvent extends Struct.ComponentSchema {
+  collectionName: 'components_event_events';
   info: {
-    displayName: 'Component';
-    icon: 'alien';
+    displayName: 'Event';
+    icon: 'clock';
   };
   attributes: {
-    nachName: Schema.Attribute.String;
-    vorName: Schema.Attribute.String & Schema.Attribute.Required;
+    endDate: Schema.Attribute.Date;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    startDate: Schema.Attribute.Date;
+    tags: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>;
   };
 }
 
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'what.component': WhatComponent;
+      'event.event': EventEvent;
     }
   }
 }

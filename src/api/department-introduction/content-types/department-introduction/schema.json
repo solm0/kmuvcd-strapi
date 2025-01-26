@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "department_introductions",
+  "info": {
+    "singularName": "department-introduction",
+    "pluralName": "department-introductions",
+    "displayName": "학과 소개"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": false
+    },
+    "content": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
+    }
+  }
+}
