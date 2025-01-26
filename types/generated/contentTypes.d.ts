@@ -466,6 +466,7 @@ export interface ApiClubClub extends Struct.CollectionTypeSchema {
 export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
   collectionName: 'courses';
   info: {
+    description: '';
     displayName: '\uAD50\uACFC\uBAA9';
     pluralName: 'courses';
     singularName: 'course';
@@ -503,8 +504,21 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    grade: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::course.course'>;
+    mandatory: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -521,6 +535,51 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCurriculumCurriculum extends Struct.SingleTypeSchema {
+  collectionName: 'curriculums';
+  info: {
+    displayName: '\uAD50\uC721\uACFC\uC815';
+    pluralName: 'curriculums';
+    singularName: 'curriculum';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    content: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::curriculum.curriculum'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1753,6 +1812,7 @@ declare module '@strapi/strapi' {
       'api::club-overview.club-overview': ApiClubOverviewClubOverview;
       'api::club.club': ApiClubClub;
       'api::course.course': ApiCourseCourse;
+      'api::curriculum.curriculum': ApiCurriculumCurriculum;
       'api::department-introduction.department-introduction': ApiDepartmentIntroductionDepartmentIntroduction;
       'api::double-major-and-minor.double-major-and-minor': ApiDoubleMajorAndMinorDoubleMajorAndMinor;
       'api::event.event': ApiEventEvent;

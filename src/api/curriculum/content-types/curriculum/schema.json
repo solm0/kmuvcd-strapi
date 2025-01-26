@@ -1,0 +1,37 @@
+{
+  "kind": "singleType",
+  "collectionName": "curriculums",
+  "info": {
+    "singularName": "curriculum",
+    "pluralName": "curriculums",
+    "displayName": "교육과정"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "content": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
+    }
+  }
+}
