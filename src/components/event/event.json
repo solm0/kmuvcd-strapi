@@ -7,6 +7,11 @@
   },
   "options": {},
   "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
     "startDate": {
       "type": "date",
       "required": true
@@ -14,10 +19,8 @@
     "endDate": {
       "type": "date"
     },
-    "name": {
-      "type": "string",
-      "required": true,
-      "unique": true
+    "location": {
+      "type": "string"
     },
     "tags": {
       "type": "relation",
@@ -25,14 +28,15 @@
       "target": "api::tag.tag"
     },
     "poster": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     }
   }
 }

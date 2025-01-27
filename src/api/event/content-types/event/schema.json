@@ -16,14 +16,15 @@
     }
   },
   "attributes": {
-    "content": {
+    "name": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "richtext",
-      "required": true
+      "type": "string",
+      "required": true,
+      "unique": true
     },
     "Event": {
       "displayName": "Event",
@@ -35,6 +36,15 @@
         }
       },
       "component": "event.event",
+      "required": true
+    },
+    "content": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext",
       "required": true
     },
     "link": {

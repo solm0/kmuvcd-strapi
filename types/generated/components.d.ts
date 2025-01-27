@@ -9,6 +9,7 @@ export interface EventEvent extends Struct.ComponentSchema {
   };
   attributes: {
     endDate: Schema.Attribute.Date;
+    location: Schema.Attribute.String;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
