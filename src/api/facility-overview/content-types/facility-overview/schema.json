@@ -4,7 +4,8 @@
   "info": {
     "singularName": "facility-overview",
     "pluralName": "facility-overviews",
-    "displayName": "시설 소개"
+    "displayName": "시설 소개",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -43,14 +44,15 @@
       "type": "blocks"
     },
     "photo": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ],
-      "type": "media",
-      "multiple": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -64,6 +66,16 @@
         }
       },
       "type": "richtext"
+    },
+    "media_and_text": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "media-and-text.media-and-text"
     }
   }
 }

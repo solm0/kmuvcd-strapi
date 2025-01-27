@@ -4,7 +4,8 @@
   "info": {
     "singularName": "club-overview",
     "pluralName": "club-overviews",
-    "displayName": "동아리 소개"
+    "displayName": "동아리 소개",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -40,6 +41,16 @@
         }
       },
       "type": "richtext"
+    },
+    "media_and_text": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "media-and-text.media-and-text"
     }
   }
 }

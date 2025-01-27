@@ -4,7 +4,8 @@
   "info": {
     "singularName": "staff",
     "pluralName": "staffs",
-    "displayName": "교직원"
+    "displayName": "교직원",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -56,6 +57,16 @@
         }
       },
       "type": "string"
+    },
+    "media_and_text": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "media-and-text.media-and-text"
     }
   }
 }

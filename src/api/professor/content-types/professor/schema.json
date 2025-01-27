@@ -4,7 +4,8 @@
   "info": {
     "singularName": "professor",
     "pluralName": "professors",
-    "displayName": "교수진"
+    "displayName": "교수진",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -75,18 +76,28 @@
       "type": "string"
     },
     "photo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files"
       ],
-      "type": "media",
-      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "media_and_text": {
+      "type": "component",
+      "repeatable": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "required": false
+      "component": "media-and-text.media-and-text"
     }
   }
 }

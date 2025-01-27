@@ -373,6 +373,7 @@ export interface ApiClubOverviewClubOverview
   extends Struct.CollectionTypeSchema {
   collectionName: 'club_overviews';
   info: {
+    description: '';
     displayName: '\uB3D9\uC544\uB9AC \uC18C\uAC1C';
     pluralName: 'club-overviews';
     singularName: 'club-overview';
@@ -406,6 +407,15 @@ export interface ApiClubOverviewClubOverview
       'oneToMany',
       'api::club-overview.club-overview'
     >;
+    media_and_text: Schema.Attribute.Component<
+      'media-and-text.media-and-text',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -424,6 +434,7 @@ export interface ApiClubOverviewClubOverview
 export interface ApiClubClub extends Struct.CollectionTypeSchema {
   collectionName: 'clubs';
   info: {
+    description: '';
     displayName: '\uB3D9\uC544\uB9AC';
     pluralName: 'clubs';
     singularName: 'club';
@@ -448,6 +459,15 @@ export interface ApiClubClub extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::club.club'>;
+    media_and_text: Schema.Attribute.Component<
+      'media-and-text.media-and-text',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -718,6 +738,15 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
       }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
+    media_and_text: Schema.Attribute.Component<
+      'media-and-text.media-and-text',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -795,6 +824,7 @@ export interface ApiFacilityOverviewFacilityOverview
   extends Struct.CollectionTypeSchema {
   collectionName: 'facility_overviews';
   info: {
+    description: '';
     displayName: '\uC2DC\uC124 \uC18C\uAC1C';
     pluralName: 'facility-overviews';
     singularName: 'facility-overview';
@@ -828,6 +858,15 @@ export interface ApiFacilityOverviewFacilityOverview
       'oneToMany',
       'api::facility-overview.facility-overview'
     >;
+    media_and_text: Schema.Attribute.Component<
+      'media-and-text.media-and-text',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -862,6 +901,7 @@ export interface ApiFacilityOverviewFacilityOverview
 export interface ApiFacilityFacility extends Struct.CollectionTypeSchema {
   collectionName: 'facilities';
   info: {
+    description: '';
     displayName: '\uC2DC\uC124';
     pluralName: 'facilities';
     singularName: 'facility';
@@ -889,6 +929,15 @@ export interface ApiFacilityFacility extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::facility.facility'
     >;
+    media_and_text: Schema.Attribute.Component<
+      'media-and-text.media-and-text',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -908,6 +957,7 @@ export interface ApiGraduateSchoolGraduateSchool
   extends Struct.CollectionTypeSchema {
   collectionName: 'graduate_schools';
   info: {
+    description: '';
     displayName: '\uB300\uD559\uC6D0';
     pluralName: 'graduate-schools';
     singularName: 'graduate-school';
@@ -941,6 +991,15 @@ export interface ApiGraduateSchoolGraduateSchool
       'oneToMany',
       'api::graduate-school.graduate-school'
     >;
+    media_and_text: Schema.Attribute.Component<
+      'media-and-text.media-and-text',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -1054,6 +1113,15 @@ export interface ApiNoticeNotice extends Struct.CollectionTypeSchema {
       }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::notice.notice'>;
+    media_and_text: Schema.Attribute.Component<
+      'media-and-text.media-and-text',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
@@ -1072,6 +1140,7 @@ export interface ApiNoticeNotice extends Struct.CollectionTypeSchema {
 export interface ApiProfessorProfessor extends Struct.CollectionTypeSchema {
   collectionName: 'professors';
   info: {
+    description: '';
     displayName: '\uAD50\uC218\uC9C4';
     pluralName: 'professors';
     singularName: 'professor';
@@ -1106,6 +1175,15 @@ export interface ApiProfessorProfessor extends Struct.CollectionTypeSchema {
       'api::professor.professor'
     >;
     location: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    media_and_text: Schema.Attribute.Component<
+      'media-and-text.media-and-text',
+      true
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1154,6 +1232,7 @@ export interface ApiProfessorProfessor extends Struct.CollectionTypeSchema {
 export interface ApiStaffStaff extends Struct.CollectionTypeSchema {
   collectionName: 'staffs';
   info: {
+    description: '';
     displayName: '\uAD50\uC9C1\uC6D0';
     pluralName: 'staffs';
     singularName: 'staff';
@@ -1190,6 +1269,15 @@ export interface ApiStaffStaff extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    media_and_text: Schema.Attribute.Component<
+      'media-and-text.media-and-text',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -1215,6 +1303,7 @@ export interface ApiStudentCouncilStudentCouncil
   extends Struct.CollectionTypeSchema {
   collectionName: 'student_councils';
   info: {
+    description: '';
     displayName: '\uD559\uC0DD\uD68C';
     pluralName: 'student-councils';
     singularName: 'student-council';
@@ -1242,6 +1331,15 @@ export interface ApiStudentCouncilStudentCouncil
       'oneToMany',
       'api::student-council.student-council'
     >;
+    media_and_text: Schema.Attribute.Component<
+      'media-and-text.media-and-text',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &

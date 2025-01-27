@@ -4,7 +4,8 @@
   "info": {
     "singularName": "facility",
     "pluralName": "facilities",
-    "displayName": "시설"
+    "displayName": "시설",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -32,6 +33,16 @@
         }
       },
       "type": "richtext"
+    },
+    "media_and_text": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "media-and-text.media-and-text"
     }
   }
 }

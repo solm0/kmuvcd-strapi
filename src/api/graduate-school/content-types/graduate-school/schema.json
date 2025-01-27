@@ -4,7 +4,8 @@
   "info": {
     "singularName": "graduate-school",
     "pluralName": "graduate-schools",
-    "displayName": "대학원"
+    "displayName": "대학원",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -50,6 +51,16 @@
       },
       "type": "string",
       "required": true
+    },
+    "media_and_text": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "media-and-text.media-and-text"
     }
   }
 }

@@ -25,15 +25,17 @@ export interface EventEvent extends Struct.ComponentSchema {
 export interface MediaAndTextMediaAndText extends Struct.ComponentSchema {
   collectionName: 'components_media_and_text_media_and_texts';
   info: {
+    description: '';
     displayName: 'media_and_text';
     icon: 'dashboard';
   };
   attributes: {
+    lower_text: Schema.Attribute.RichText;
     media: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
-    text: Schema.Attribute.RichText;
+    upper_text: Schema.Attribute.RichText;
   };
 }
 
