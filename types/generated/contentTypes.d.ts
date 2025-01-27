@@ -736,6 +736,7 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
 export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
   collectionName: 'exhibitions';
   info: {
+    description: '';
     displayName: '\uC804\uC2DC';
     pluralName: 'exhibitions';
     singularName: 'exhibition';
@@ -752,18 +753,15 @@ export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    endDate: Schema.Attribute.Date &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::exhibition.exhibition'
     >;
-    location: Schema.Attribute.String &
+    media_and_text: Schema.Attribute.Component<
+      'media-and-text.media-and-text',
+      true
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -787,12 +785,6 @@ export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
-    startDate: Schema.Attribute.Date &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

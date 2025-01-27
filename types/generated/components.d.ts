@@ -22,10 +22,26 @@ export interface EventEvent extends Struct.ComponentSchema {
   };
 }
 
+export interface MediaAndTextMediaAndText extends Struct.ComponentSchema {
+  collectionName: 'components_media_and_text_media_and_texts';
+  info: {
+    displayName: 'media_and_text';
+    icon: 'dashboard';
+  };
+  attributes: {
+    media: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    text: Schema.Attribute.RichText;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'event.event': EventEvent;
+      'media-and-text.media-and-text': MediaAndTextMediaAndText;
     }
   }
 }

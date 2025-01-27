@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_media_and_text_media_and_texts",
+  "info": {
+    "displayName": "media_and_text",
+    "icon": "dashboard"
+  },
+  "options": {},
+  "attributes": {
+    "media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "text": {
+      "type": "richtext"
+    }
+  }
+}
