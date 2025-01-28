@@ -4,7 +4,8 @@
   "info": {
     "singularName": "department-introduction",
     "pluralName": "department-introductions",
-    "displayName": "학과 소개"
+    "displayName": "학과 소개",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,7 +16,7 @@
     }
   },
   "attributes": {
-    "title": {
+    "name": {
       "pluginOptions": {
         "i18n": {
           "localized": true

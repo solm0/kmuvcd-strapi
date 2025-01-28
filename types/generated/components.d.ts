@@ -39,11 +39,26 @@ export interface MediaAndTextMediaAndText extends Struct.ComponentSchema {
   };
 }
 
+export interface WebsiteWebsite extends Struct.ComponentSchema {
+  collectionName: 'components_website_websites';
+  info: {
+    displayName: 'website';
+    icon: 'globe';
+  };
+  attributes: {
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    url: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'event.event': EventEvent;
       'media-and-text.media-and-text': MediaAndTextMediaAndText;
+      'website.website': WebsiteWebsite;
     }
   }
 }

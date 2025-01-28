@@ -428,6 +428,12 @@ export interface ApiClubOverviewClubOverview
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    website: Schema.Attribute.Component<'website.website', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 
@@ -609,6 +615,7 @@ export interface ApiDepartmentIntroductionDepartmentIntroduction
   extends Struct.SingleTypeSchema {
   collectionName: 'department_introductions';
   info: {
+    description: '';
     displayName: '\uD559\uACFC \uC18C\uAC1C';
     pluralName: 'department-introductions';
     singularName: 'department-introduction';
@@ -636,13 +643,13 @@ export interface ApiDepartmentIntroductionDepartmentIntroduction
       'oneToMany',
       'api::department-introduction.department-introduction'
     >;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String &
+    name: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -729,12 +736,6 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    link: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
     media_and_text: Schema.Attribute.Component<
@@ -758,6 +759,12 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    website: Schema.Attribute.Component<'website.website', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 
@@ -949,6 +956,12 @@ export interface ApiFacilityFacility extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    website: Schema.Attribute.Component<'website.website', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 
@@ -1011,8 +1024,7 @@ export interface ApiGraduateSchoolGraduateSchool
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    website: Schema.Attribute.String &
-      Schema.Attribute.Required &
+    website: Schema.Attribute.Component<'website.website', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1121,8 +1133,7 @@ export interface ApiNoticeNotice extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String &
+    name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
       Schema.Attribute.SetPluginOptions<{
@@ -1130,9 +1141,16 @@ export interface ApiNoticeNotice extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    website: Schema.Attribute.Component<'website.website', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 
@@ -1225,6 +1243,12 @@ export interface ApiProfessorProfessor extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    website: Schema.Attribute.Component<'website.website', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 
