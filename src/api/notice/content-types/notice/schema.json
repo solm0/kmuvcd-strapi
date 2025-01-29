@@ -36,15 +36,6 @@
       "default": "관리자",
       "required": true
     },
-    "content": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "richtext",
-      "required": true
-    },
     "Event": {
       "type": "component",
       "repeatable": true,
@@ -55,16 +46,6 @@
       },
       "component": "event.event"
     },
-    "media_and_text": {
-      "type": "component",
-      "repeatable": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "media-and-text.media-and-text"
-    },
     "website": {
       "type": "component",
       "repeatable": true,
@@ -74,6 +55,18 @@
         }
       },
       "component": "website.website"
+    },
+    "content": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "content.media",
+        "content.content"
+      ]
     }
   }
 }

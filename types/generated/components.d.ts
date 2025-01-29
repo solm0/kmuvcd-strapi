@@ -1,5 +1,31 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ContentContent extends Struct.ComponentSchema {
+  collectionName: 'components_content_contents';
+  info: {
+    description: '';
+    displayName: 'text';
+    icon: 'pencil';
+  };
+  attributes: {
+    text: Schema.Attribute.RichText;
+  };
+}
+
+export interface ContentMedia extends Struct.ComponentSchema {
+  collectionName: 'components_content_media';
+  info: {
+    displayName: 'media';
+    icon: 'picture';
+  };
+  attributes: {
+    media: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+  };
+}
+
 export interface EventEvent extends Struct.ComponentSchema {
   collectionName: 'components_event_events';
   info: {
@@ -13,29 +39,9 @@ export interface EventEvent extends Struct.ComponentSchema {
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
-    poster: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    poster: Schema.Attribute.Media<'images', true>;
     startDate: Schema.Attribute.Date & Schema.Attribute.Required;
     tags: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>;
-  };
-}
-
-export interface MediaAndTextMediaAndText extends Struct.ComponentSchema {
-  collectionName: 'components_media_and_text_media_and_texts';
-  info: {
-    description: '';
-    displayName: 'media_and_text';
-    icon: 'dashboard';
-  };
-  attributes: {
-    lower_text: Schema.Attribute.RichText;
-    media: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
-    upper_text: Schema.Attribute.RichText;
   };
 }
 
@@ -56,8 +62,9 @@ export interface WebsiteWebsite extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'content.content': ContentContent;
+      'content.media': ContentMedia;
       'event.event': EventEvent;
-      'media-and-text.media-and-text': MediaAndTextMediaAndText;
       'website.website': WebsiteWebsite;
     }
   }

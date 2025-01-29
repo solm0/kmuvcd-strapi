@@ -4,7 +4,8 @@
   "info": {
     "singularName": "double-major-and-minor",
     "pluralName": "double-major-and-minors",
-    "displayName": "복/부전공"
+    "displayName": "복/부전공",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -31,8 +32,11 @@
           "localized": true
         }
       },
-      "type": "richtext",
-      "required": true
+      "type": "dynamiczone",
+      "components": [
+        "content.media",
+        "content.content"
+      ]
     }
   }
 }

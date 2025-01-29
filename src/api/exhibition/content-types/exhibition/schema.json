@@ -26,15 +26,12 @@
       "required": true,
       "unique": true
     },
-    "photos": {
+    "thumbnail": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ],
       "pluginOptions": {
         "i18n": {
@@ -42,15 +39,18 @@
         }
       }
     },
-    "media_and_text": {
-      "type": "component",
-      "repeatable": true,
+    "content": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "media-and-text.media-and-text"
+      "type": "dynamiczone",
+      "components": [
+        "content.content",
+        "content.media"
+      ],
+      "required": true
     }
   }
 }

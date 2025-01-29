@@ -70,13 +70,17 @@
       },
       "type": "integer"
     },
-    "description": {
+    "content": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "text"
+      "type": "dynamiczone",
+      "components": [
+        "content.media",
+        "content.content"
+      ]
     }
   }
 }

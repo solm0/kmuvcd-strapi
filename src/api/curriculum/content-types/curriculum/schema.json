@@ -4,7 +4,8 @@
   "info": {
     "singularName": "curriculum",
     "pluralName": "curriculums",
-    "displayName": "교육과정"
+    "displayName": "교육과정",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -31,7 +32,11 @@
           "localized": true
         }
       },
-      "type": "richtext"
+      "type": "dynamiczone",
+      "components": [
+        "content.media",
+        "content.content"
+      ]
     }
   }
 }

@@ -387,7 +387,9 @@ export interface ApiClubOverviewClubOverview
     };
   };
   attributes: {
-    content: Schema.Attribute.RichText &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -396,26 +398,11 @@ export interface ApiClubOverviewClubOverview
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::club-overview.club-overview'
     >;
-    media_and_text: Schema.Attribute.Component<
-      'media-and-text.media-and-text',
-      true
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -425,6 +412,12 @@ export interface ApiClubOverviewClubOverview
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    thumbnail: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -454,7 +447,9 @@ export interface ApiClubClub extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    content: Schema.Attribute.RichText &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -465,15 +460,6 @@ export interface ApiClubClub extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::club.club'>;
-    media_and_text: Schema.Attribute.Component<
-      'media-and-text.media-and-text',
-      true
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -506,17 +492,19 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    credits: Schema.Attribute.Integer &
-      Schema.Attribute.Required &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    description: Schema.Attribute.Text &
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    credits: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -569,6 +557,7 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
 export interface ApiCurriculumCurriculum extends Struct.SingleTypeSchema {
   collectionName: 'curriculums';
   info: {
+    description: '';
     displayName: '\uAD50\uC721\uACFC\uC815';
     pluralName: 'curriculums';
     singularName: 'curriculum';
@@ -582,7 +571,9 @@ export interface ApiCurriculumCurriculum extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
-    content: Schema.Attribute.RichText &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -629,7 +620,9 @@ export interface ApiDepartmentIntroductionDepartmentIntroduction
     };
   };
   attributes: {
-    content: Schema.Attribute.RichText &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -660,6 +653,7 @@ export interface ApiDoubleMajorAndMinorDoubleMajorAndMinor
   extends Struct.SingleTypeSchema {
   collectionName: 'double_major_and_minors';
   info: {
+    description: '';
     displayName: '\uBCF5/\uBD80\uC804\uACF5';
     pluralName: 'double-major-and-minors';
     singularName: 'double-major-and-minor';
@@ -673,8 +667,9 @@ export interface ApiDoubleMajorAndMinorDoubleMajorAndMinor
     };
   };
   attributes: {
-    content: Schema.Attribute.RichText &
-      Schema.Attribute.Required &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -719,8 +714,9 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    content: Schema.Attribute.RichText &
-      Schema.Attribute.Required &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -738,15 +734,6 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
       }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
-    media_and_text: Schema.Attribute.Component<
-      'media-and-text.media-and-text',
-      true
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -785,6 +772,15 @@ export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    content: Schema.Attribute.DynamicZone<
+      ['content.content', 'content.media']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -793,15 +789,6 @@ export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::exhibition.exhibition'
     >;
-    media_and_text: Schema.Attribute.Component<
-      'media-and-text.media-and-text',
-      true
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -810,16 +797,13 @@ export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    photos: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    > &
+    publishedAt: Schema.Attribute.DateTime;
+    thumbnail: Schema.Attribute.Media<'images'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -844,7 +828,9 @@ export interface ApiFacilityOverviewFacilityOverview
     };
   };
   attributes: {
-    content: Schema.Attribute.RichText &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -853,26 +839,11 @@ export interface ApiFacilityOverviewFacilityOverview
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::facility-overview.facility-overview'
     >;
-    media_and_text: Schema.Attribute.Component<
-      'media-and-text.media-and-text',
-      true
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -881,18 +852,15 @@ export interface ApiFacilityOverviewFacilityOverview
           localized: true;
         };
       }>;
-    photos: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    > &
+    publishedAt: Schema.Attribute.DateTime;
+    room_number: Schema.Attribute.String &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    publishedAt: Schema.Attribute.DateTime;
-    room_number: Schema.Attribute.String &
-      Schema.Attribute.Required &
+    thumbnail: Schema.Attribute.Media<'images'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -921,7 +889,9 @@ export interface ApiFacilityFacility extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    content: Schema.Attribute.RichText &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -935,15 +905,6 @@ export interface ApiFacilityFacility extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::facility.facility'
     >;
-    media_and_text: Schema.Attribute.Component<
-      'media-and-text.media-and-text',
-      true
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -983,7 +944,10 @@ export interface ApiGraduateSchoolGraduateSchool
     };
   };
   attributes: {
-    content: Schema.Attribute.RichText &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -992,26 +956,11 @@ export interface ApiGraduateSchoolGraduateSchool
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::graduate-school.graduate-school'
     >;
-    media_and_text: Schema.Attribute.Component<
-      'media-and-text.media-and-text',
-      true
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -1051,8 +1000,9 @@ export interface ApiGraduationRequirementGraduationRequirement
     };
   };
   attributes: {
-    content: Schema.Attribute.RichText &
-      Schema.Attribute.Required &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1106,8 +1056,9 @@ export interface ApiNoticeNotice extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<'\uAD00\uB9AC\uC790'>;
-    content: Schema.Attribute.RichText &
-      Schema.Attribute.Required &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1124,15 +1075,6 @@ export interface ApiNoticeNotice extends Struct.CollectionTypeSchema {
       }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::notice.notice'>;
-    media_and_text: Schema.Attribute.Component<
-      'media-and-text.media-and-text',
-      true
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -1171,6 +1113,14 @@ export interface ApiProfessorProfessor extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1211,12 +1161,6 @@ export interface ApiProfessorProfessor extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    photo: Schema.Attribute.Media<'images' | 'files'> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     position: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1224,6 +1168,12 @@ export interface ApiProfessorProfessor extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    thumbnail: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -1260,15 +1210,17 @@ export interface ApiStaffStaff extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
     email: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1278,15 +1230,6 @@ export interface ApiStaffStaff extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::staff.staff'>;
     location: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    media_and_text: Schema.Attribute.Component<
-      'media-and-text.media-and-text',
-      true
-    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1331,29 +1274,22 @@ export interface ApiStudentCouncilStudentCouncil
     };
   };
   attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::student-council.student-council'
-    >;
-    media_and_text: Schema.Attribute.Component<
-      'media-and-text.media-and-text',
-      true
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::student-council.student-council'
+    >;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &

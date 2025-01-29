@@ -31,7 +31,11 @@
           "localized": true
         }
       },
-      "type": "richtext"
+      "type": "dynamiczone",
+      "components": [
+        "content.media",
+        "content.content"
+      ]
     }
   }
 }
