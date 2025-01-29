@@ -1,5 +1,17 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ContentContent extends Struct.ComponentSchema {
+  collectionName: 'components_content_contents';
+  info: {
+    description: '';
+    displayName: 'text';
+    icon: 'pencil';
+  };
+  attributes: {
+    text: Schema.Attribute.RichText;
+  };
+}
+
 export interface ContentMedia extends Struct.ComponentSchema {
   collectionName: 'components_content_media';
   info: {
@@ -11,17 +23,6 @@ export interface ContentMedia extends Struct.ComponentSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
-  };
-}
-
-export interface ContentText extends Struct.ComponentSchema {
-  collectionName: 'components_content_texts';
-  info: {
-    displayName: 'text';
-    icon: 'pencil';
-  };
-  attributes: {
-    text: Schema.Attribute.RichText;
   };
 }
 
@@ -61,8 +62,8 @@ export interface WebsiteWebsite extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'content.content': ContentContent;
       'content.media': ContentMedia;
-      'content.text': ContentText;
       'event.event': EventEvent;
       'website.website': WebsiteWebsite;
     }

@@ -34,8 +34,7 @@
       },
       "type": "dynamiczone",
       "components": [
-        "content.media",
-        "content.text"
+        "content.media"
       ]
     }
   }
