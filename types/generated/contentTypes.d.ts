@@ -1197,15 +1197,6 @@ export interface ApiProfessorProfessor extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    media_and_text: Schema.Attribute.Component<
-      'media-and-text.media-and-text',
-      true
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
