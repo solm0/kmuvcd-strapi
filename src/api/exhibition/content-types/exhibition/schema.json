@@ -47,8 +47,8 @@
       },
       "type": "dynamiczone",
       "components": [
-        "content.content",
-        "content.media"
+        "content.media",
+        "content.text"
       ],
       "required": true
     }

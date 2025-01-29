@@ -1,9 +1,8 @@
 {
-  "collectionName": "components_content_contents",
+  "collectionName": "components_content_texts",
   "info": {
     "displayName": "text",
-    "icon": "pencil",
-    "description": ""
+    "icon": "pencil"
   },
   "options": {},
   "attributes": {
