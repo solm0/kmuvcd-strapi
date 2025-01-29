@@ -33,7 +33,8 @@
       },
       "type": "dynamiczone",
       "components": [
-        "content.media"
+        "content.media",
+        "event.event"
       ]
     }
   }

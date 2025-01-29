@@ -387,7 +387,9 @@ export interface ApiClubOverviewClubOverview
     };
   };
   attributes: {
-    content: Schema.Attribute.DynamicZone<['content.media']> &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -445,7 +447,9 @@ export interface ApiClubClub extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    content: Schema.Attribute.DynamicZone<['content.media']> &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -567,7 +571,9 @@ export interface ApiCurriculumCurriculum extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
-    content: Schema.Attribute.DynamicZone<['content.media']> &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -614,7 +620,7 @@ export interface ApiDepartmentIntroductionDepartmentIntroduction
     };
   };
   attributes: {
-    content: Schema.Attribute.DynamicZone<['content.media']> &
+    content: Schema.Attribute.DynamicZone<['content.media', 'event.event']> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -659,7 +665,9 @@ export interface ApiDoubleMajorAndMinorDoubleMajorAndMinor
     };
   };
   attributes: {
-    content: Schema.Attribute.DynamicZone<['content.media']> &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -704,7 +712,9 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    content: Schema.Attribute.DynamicZone<['content.media']> &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -760,7 +770,9 @@ export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    content: Schema.Attribute.DynamicZone<['content.media']> &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -814,7 +826,9 @@ export interface ApiFacilityOverviewFacilityOverview
     };
   };
   attributes: {
-    content: Schema.Attribute.DynamicZone<['content.media']> &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -873,7 +887,9 @@ export interface ApiFacilityFacility extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    content: Schema.Attribute.DynamicZone<['content.media']> &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -926,7 +942,9 @@ export interface ApiGraduateSchoolGraduateSchool
     };
   };
   attributes: {
-    content: Schema.Attribute.DynamicZone<['content.media']> &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -980,7 +998,9 @@ export interface ApiGraduationRequirementGraduationRequirement
     };
   };
   attributes: {
-    content: Schema.Attribute.DynamicZone<['content.media']> &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1034,7 +1054,9 @@ export interface ApiNoticeNotice extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<'\uAD00\uB9AC\uC790'>;
-    content: Schema.Attribute.DynamicZone<['content.media']> &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1186,7 +1208,9 @@ export interface ApiStaffStaff extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    content: Schema.Attribute.DynamicZone<['content.media']> &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1248,7 +1272,9 @@ export interface ApiStudentCouncilStudentCouncil
     };
   };
   attributes: {
-    content: Schema.Attribute.DynamicZone<['content.media']> &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
