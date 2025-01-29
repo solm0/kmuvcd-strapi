@@ -620,7 +620,9 @@ export interface ApiDepartmentIntroductionDepartmentIntroduction
     };
   };
   attributes: {
-    content: Schema.Attribute.DynamicZone<['content.media', 'event.event']> &
+    content: Schema.Attribute.DynamicZone<
+      ['content.media', 'content.content']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
