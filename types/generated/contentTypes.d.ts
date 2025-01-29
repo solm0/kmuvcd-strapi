@@ -810,7 +810,7 @@ export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    photo: Schema.Attribute.Media<
+    photos: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
     > &
@@ -881,7 +881,7 @@ export interface ApiFacilityOverviewFacilityOverview
           localized: true;
         };
       }>;
-    photo: Schema.Attribute.Media<
+    photos: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
     > &
