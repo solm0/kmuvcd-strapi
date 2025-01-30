@@ -24,19 +24,17 @@
       },
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": true,
+      "default": "교육과정"
     },
-    "content": {
+    "text": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "dynamiczone",
-      "components": [
-        "content.media",
-        "content.content"
-      ]
+      "type": "richtext",
+      "required": true
     }
   }
 }
