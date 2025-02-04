@@ -1,19 +1,16 @@
 export default ({ env }) => ({
   email: {
-    logger: {
-      debug: console.log,
-      info: console.info,
-      warn: console.warn,
-      error: console.error
-    },
     config: {
-      provider: 'sendmail',
-      settings: {
-        defaultFrom: 'your-email@email.com',
-        defaultReplyTo: 'your-email@email.com',
+      provider: 'strapi-provider-email-resend',
+      providerOptions: {
+        apiKey: env('RESEND_API_KEY'), // Required
       },
-    },
-  },
+      settings: {
+        defaultFrom: 'noreply@kmuvcd.vercel.app',
+        defaultReplyTo: 'support@kmuvcd.vercel.app',
+      },
+    }
+  },    
   upload: {
     config: {
       provider: 'cloudinary',
