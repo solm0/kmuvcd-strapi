@@ -6,8 +6,8 @@ export default ({ env }) => ({
         apiKey: env('RESEND_API_KEY'), // Required
       },
       settings: {
-        defaultFrom: 'noreply@kmuvcd.vercel.app',
-        defaultReplyTo: 'support@kmuvcd.vercel.app',
+        defaultFrom: 'noreply@solmee.xyz',
+        defaultReplyTo: 'support@solmee.xyz',
       },
     }
   },    
