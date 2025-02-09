@@ -35,6 +35,12 @@
       "relation": "manyToOne",
       "target": "api::event.event",
       "inversedBy": "calendars"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "calendars"
     }
   }
 }
