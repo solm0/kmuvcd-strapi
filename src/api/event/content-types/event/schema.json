@@ -26,18 +26,6 @@
       "required": true,
       "unique": true
     },
-    "Event": {
-      "displayName": "Event",
-      "type": "component",
-      "repeatable": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "event.event",
-      "required": true
-    },
     "website": {
       "type": "component",
       "repeatable": true,
@@ -55,6 +43,24 @@
         }
       },
       "type": "richtext"
+    },
+    "calendars": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::calendar.calendar",
+      "mappedBy": "detail"
+    },
+    "poster": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 }
