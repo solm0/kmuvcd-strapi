@@ -4,13 +4,7 @@ module.exports = (plugin) => {
       return plugin.controllers.user.update(ctx);
   }
 
-  plugin.routes['content-api'].routes.push(
-    {
-      method: 'PUT',
-      path: '/users/me',
-      handler: 'user.updateMe'
-    },
-    {
+  plugin.routes['content-api'].routes.push({
       method: 'PATCH',
       path: '/users/me',
       handler: 'user.updateMe'
