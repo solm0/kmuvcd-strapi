@@ -4,11 +4,18 @@ module.exports = (plugin) => {
       return plugin.controllers.user.update(ctx);
   }
 
-  plugin.routes['content-api'].routes.push({
+  plugin.routes['content-api'].routes.push(
+    {
       method: 'PUT',
       path: '/users/me',
       handler: 'user.updateMe'
-  });
+    },
+    {
+      method: 'PATCH',
+      path: '/users/me',
+      handler: 'user.updateMe'
+    }
+  );
 
   return plugin;
 }
