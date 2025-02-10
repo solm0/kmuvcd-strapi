@@ -15,7 +15,20 @@ export default [
       },
     },
   },
-  'strapi::cors',
+  {
+    name: 'strapi::cors',
+    config: {
+      enabled: true,
+      origin: [
+        'https://kmuvcd.vercel.app',  // Your production frontend URL
+        'http://localhost:3000',      // Localhost URL for testing
+      ],
+      headers: [
+        'Content-Type',
+        'Authorization',
+      ],
+    },
+  },
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',
