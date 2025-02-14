@@ -18,7 +18,6 @@ export default [
   {
     name: 'strapi::cors',
     config: {
-      enabled: true,
       credentials: true,
       origin: [
         'https://kmuvcd.vercel.app',  // Your production frontend URL
