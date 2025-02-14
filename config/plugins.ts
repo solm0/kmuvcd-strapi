@@ -6,7 +6,7 @@ export default ({ env }) => ({
         apiKey: env('RESEND_API_KEY'), // Required
       },
       settings: {
-        defaultFrom: 'noreply@solmee.xyz',
+        defaultFrom: 'no-reply@solmee.xyz',
         defaultReplyTo: 'support@solmee.xyz',
       },
     }
