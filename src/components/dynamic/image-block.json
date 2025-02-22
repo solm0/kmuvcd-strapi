@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_dynamic_image_blocks",
+  "info": {
+    "displayName": "Image_block"
+  },
+  "options": {},
+  "attributes": {
+    "image_block": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

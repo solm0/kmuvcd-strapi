@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_dynamic_text_blocks",
+  "info": {
+    "displayName": "text_block"
+  },
+  "options": {},
+  "attributes": {
+    "text_block": {
+      "type": "richtext"
+    }
+  }
+}

@@ -26,20 +26,27 @@
       "required": true,
       "unique": true
     },
-    "thumbnail": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ],
+    "author": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "type": "string",
+      "required": true,
+      "default": "관리자"
     },
-    "content": {
+    "website": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "website.website"
+    },
+    "dynamic": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -47,10 +54,25 @@
       },
       "type": "dynamiczone",
       "components": [
-        "content.media",
-        "content.content"
-      ],
+        "dynamic.text-block",
+        "dynamic.image-block"
+      ]
+    },
+    "category": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "default": "exhibition",
       "required": true
+    },
+    "calendars": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::calendar.calendar",
+      "mappedBy": "exhibitions"
     }
   }
 }

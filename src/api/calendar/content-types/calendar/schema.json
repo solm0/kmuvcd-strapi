@@ -4,7 +4,8 @@
   "info": {
     "singularName": "calendar",
     "pluralName": "calendars",
-    "displayName": "Calendar"
+    "displayName": "Calendar",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -30,17 +31,35 @@
       "relation": "oneToMany",
       "target": "api::tag.tag"
     },
-    "detail": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::event.event",
-      "inversedBy": "calendars"
-    },
     "users": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
       "mappedBy": "calendars"
+    },
+    "clubs": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::club.club",
+      "inversedBy": "calendars"
+    },
+    "exhibitions": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::exhibition.exhibition",
+      "inversedBy": "calendars"
+    },
+    "notices": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::notice.notice",
+      "inversedBy": "calendars"
+    },
+    "events": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::event.event",
+      "inversedBy": "calendars"
     }
   }
 }

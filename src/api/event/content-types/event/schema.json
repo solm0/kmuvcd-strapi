@@ -36,31 +36,43 @@
       },
       "component": "website.website"
     },
-    "text": {
+    "author": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "richtext"
+      "type": "string",
+      "required": true,
+      "default": "관리자"
+    },
+    "dynamic": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "dynamic.text-block",
+        "dynamic.image-block"
+      ]
+    },
+    "category": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "default": "events"
     },
     "calendars": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::calendar.calendar",
-      "mappedBy": "detail"
-    },
-    "poster": {
-      "allowedTypes": [
-        "images"
-      ],
-      "type": "media",
-      "multiple": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
+      "mappedBy": "events"
     }
   }
 }

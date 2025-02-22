@@ -1,28 +1,22 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
-export interface ContentContent extends Struct.ComponentSchema {
-  collectionName: 'components_content_contents';
+export interface DynamicImageBlock extends Struct.ComponentSchema {
+  collectionName: 'components_dynamic_image_blocks';
   info: {
-    description: '';
-    displayName: 'text';
-    icon: 'pencil';
+    displayName: 'Image_block';
   };
   attributes: {
-    text: Schema.Attribute.RichText;
+    image_block: Schema.Attribute.Media<'images', true>;
   };
 }
 
-export interface ContentMedia extends Struct.ComponentSchema {
-  collectionName: 'components_content_media';
+export interface DynamicTextBlock extends Struct.ComponentSchema {
+  collectionName: 'components_dynamic_text_blocks';
   info: {
-    displayName: 'media';
-    icon: 'picture';
+    displayName: 'text_block';
   };
   attributes: {
-    media: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    text_block: Schema.Attribute.RichText;
   };
 }
 
@@ -39,7 +33,6 @@ export interface EventEvent extends Struct.ComponentSchema {
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
-    poster: Schema.Attribute.Media<'images', true>;
     startDate: Schema.Attribute.Date & Schema.Attribute.Required;
     tags: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>;
   };
@@ -62,8 +55,8 @@ export interface WebsiteWebsite extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'content.content': ContentContent;
-      'content.media': ContentMedia;
+      'dynamic.image-block': DynamicImageBlock;
+      'dynamic.text-block': DynamicTextBlock;
       'event.event': EventEvent;
       'website.website': WebsiteWebsite;
     }

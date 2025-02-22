@@ -4,7 +4,7 @@
   "info": {
     "singularName": "notice",
     "pluralName": "notices",
-    "displayName": "학과 뉴스/공지",
+    "displayName": "공지",
     "description": ""
   },
   "options": {
@@ -36,16 +36,6 @@
       "default": "관리자",
       "required": true
     },
-    "Event": {
-      "type": "component",
-      "repeatable": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "event.event"
-    },
     "website": {
       "type": "component",
       "repeatable": true,
@@ -56,28 +46,33 @@
       },
       "component": "website.website"
     },
-    "text": {
+    "dynamic": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "richtext"
+      "type": "dynamiczone",
+      "components": [
+        "dynamic.text-block",
+        "dynamic.image-block"
+      ]
     },
-    "media": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": true,
+    "category": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "type": "string",
+      "default": "notices",
+      "required": true
+    },
+    "calendars": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::calendar.calendar",
+      "mappedBy": "notices"
     }
   }
 }
