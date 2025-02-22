@@ -847,7 +847,7 @@ export interface ApiFacilityOverviewFacilityOverview
   collectionName: 'facility_overviews';
   info: {
     description: '';
-    displayName: '\uC2DC\uC124 \uC18C\uAC1C';
+    displayName: '\uC2DC\uC124';
     pluralName: 'facility-overviews';
     singularName: 'facility-overview';
   };
