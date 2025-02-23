@@ -804,7 +804,7 @@ export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }> &
-      Schema.Attribute.DefaultTo<'exhibition'>;
+      Schema.Attribute.DefaultTo<'exhibitions'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

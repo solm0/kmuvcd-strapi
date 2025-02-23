@@ -65,7 +65,7 @@
         }
       },
       "type": "string",
-      "default": "exhibition",
+      "default": "exhibitions",
       "required": true
     },
     "calendars": {
