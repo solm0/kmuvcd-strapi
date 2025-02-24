@@ -4,7 +4,7 @@
   "info": {
     "singularName": "event",
     "pluralName": "events",
-    "displayName": "이벤트",
+    "displayName": "events",
     "description": ""
   },
   "options": {
@@ -73,6 +73,41 @@
       "relation": "oneToMany",
       "target": "api::calendar.calendar",
       "mappedBy": "events"
+    },
+    "startDate": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date"
+    },
+    "endDate": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date"
+    },
+    "location": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::events-tag.events-tag"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "events"
     }
   }
 }

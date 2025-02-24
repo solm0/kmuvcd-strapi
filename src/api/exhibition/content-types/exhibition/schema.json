@@ -4,7 +4,7 @@
   "info": {
     "singularName": "exhibition",
     "pluralName": "exhibitions",
-    "displayName": "전시",
+    "displayName": "exhibitions",
     "description": ""
   },
   "options": {
@@ -73,6 +73,41 @@
       "relation": "oneToMany",
       "target": "api::calendar.calendar",
       "mappedBy": "exhibitions"
+    },
+    "startDate": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date"
+    },
+    "endDate": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date"
+    },
+    "location": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::exhibitions-tag.exhibitions-tag"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "exhibitions"
     }
   }
 }

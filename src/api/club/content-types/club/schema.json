@@ -4,7 +4,7 @@
   "info": {
     "singularName": "club",
     "pluralName": "clubs",
-    "displayName": "동아리",
+    "displayName": "clubs",
     "description": ""
   },
   "options": {
@@ -73,6 +73,41 @@
       "relation": "oneToMany",
       "target": "api::calendar.calendar",
       "mappedBy": "clubs"
+    },
+    "startDate": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date"
+    },
+    "endDate": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date"
+    },
+    "location": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::clubs-tag.clubs-tag"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "clubs"
     }
   }
 }

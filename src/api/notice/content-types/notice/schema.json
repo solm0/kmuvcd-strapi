@@ -4,7 +4,7 @@
   "info": {
     "singularName": "notice",
     "pluralName": "notices",
-    "displayName": "공지",
+    "displayName": "notices",
     "description": ""
   },
   "options": {
@@ -73,6 +73,41 @@
       "relation": "oneToMany",
       "target": "api::calendar.calendar",
       "mappedBy": "notices"
+    },
+    "startDate": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date"
+    },
+    "endDate": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date"
+    },
+    "location": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::notices-tag.notices-tag"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "notices"
     }
   }
 }

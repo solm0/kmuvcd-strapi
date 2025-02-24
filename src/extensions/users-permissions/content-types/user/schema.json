@@ -74,6 +74,36 @@
     "realname": {
       "type": "string",
       "required": true
+    },
+    "clubs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::club.club",
+      "mappedBy": "users"
+    },
+    "events": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::event.event",
+      "mappedBy": "users"
+    },
+    "exhibitions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::exhibition.exhibition",
+      "mappedBy": "users"
+    },
+    "notices": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::notice.notice",
+      "mappedBy": "users"
+    },
+    "kookmins": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::kookmin.kookmin",
+      "mappedBy": "users"
     }
   }
 }

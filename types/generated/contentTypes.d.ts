@@ -417,7 +417,7 @@ export interface ApiClubClub extends Struct.CollectionTypeSchema {
   collectionName: 'clubs';
   info: {
     description: '';
-    displayName: '\uB3D9\uC544\uB9AC';
+    displayName: 'clubs';
     pluralName: 'clubs';
     singularName: 'club';
   };
@@ -458,8 +458,20 @@ export interface ApiClubClub extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    endDate: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::club.club'>;
+    location: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -469,15 +481,64 @@ export interface ApiClubClub extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    startDate: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    tags: Schema.Attribute.Relation<'oneToMany', 'api::clubs-tag.clubs-tag'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    users: Schema.Attribute.Relation<
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
     website: Schema.Attribute.Component<'website.website', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+  };
+}
+
+export interface ApiClubsTagClubsTag extends Struct.CollectionTypeSchema {
+  collectionName: 'clubs_tags';
+  info: {
+    displayName: 'clubs-tag';
+    pluralName: 'clubs-tags';
+    singularName: 'clubs-tag';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::clubs-tag.clubs-tag'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -707,7 +768,7 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
   collectionName: 'events';
   info: {
     description: '';
-    displayName: '\uC774\uBCA4\uD2B8';
+    displayName: 'events';
     pluralName: 'events';
     singularName: 'event';
   };
@@ -748,8 +809,20 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    endDate: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
+    location: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -759,9 +832,20 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    startDate: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    tags: Schema.Attribute.Relation<'oneToMany', 'api::events-tag.events-tag'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    users: Schema.Attribute.Relation<
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
     website: Schema.Attribute.Component<'website.website', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -771,11 +855,49 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiEventsTagEventsTag extends Struct.CollectionTypeSchema {
+  collectionName: 'events_tags';
+  info: {
+    displayName: 'events-tag';
+    pluralName: 'events-tags';
+    singularName: 'events-tag';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::events-tag.events-tag'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
   collectionName: 'exhibitions';
   info: {
     description: '';
-    displayName: '\uC804\uC2DC';
+    displayName: 'exhibitions';
     pluralName: 'exhibitions';
     singularName: 'exhibition';
   };
@@ -816,11 +938,23 @@ export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    endDate: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::exhibition.exhibition'
     >;
+    location: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -830,15 +964,68 @@ export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    startDate: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    tags: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::exhibitions-tag.exhibitions-tag'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    users: Schema.Attribute.Relation<
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
     website: Schema.Attribute.Component<'website.website', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+  };
+}
+
+export interface ApiExhibitionsTagExhibitionsTag
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'exhibitions_tags';
+  info: {
+    displayName: 'exhibitions-tag';
+    pluralName: 'exhibitions-tags';
+    singularName: 'exhibitions-tag';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::exhibitions-tag.exhibitions-tag'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1010,11 +1197,70 @@ export interface ApiGraduationRequirementGraduationRequirement
   };
 }
 
+export interface ApiKookminKookmin extends Struct.CollectionTypeSchema {
+  collectionName: 'kookmins';
+  info: {
+    displayName: 'kookmin';
+    pluralName: 'kookmins';
+    singularName: 'kookmin';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    category: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    endDate: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::kookmin.kookmin'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    startDate: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    users: Schema.Attribute.Relation<
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
 export interface ApiNoticeNotice extends Struct.CollectionTypeSchema {
   collectionName: 'notices';
   info: {
     description: '';
-    displayName: '\uACF5\uC9C0';
+    displayName: 'notices';
     pluralName: 'notices';
     singularName: 'notice';
   };
@@ -1055,8 +1301,20 @@ export interface ApiNoticeNotice extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    endDate: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::notice.notice'>;
+    location: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -1066,15 +1324,67 @@ export interface ApiNoticeNotice extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    startDate: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    tags: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::notices-tag.notices-tag'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    users: Schema.Attribute.Relation<
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
     website: Schema.Attribute.Component<'website.website', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+  };
+}
+
+export interface ApiNoticesTagNoticesTag extends Struct.CollectionTypeSchema {
+  collectionName: 'notices_tags';
+  info: {
+    displayName: 'notices-tag';
+    pluralName: 'notices-tags';
+    singularName: 'notices-tag';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::notices-tag.notices-tag'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1785,6 +2095,7 @@ export interface PluginUsersPermissionsUser
       'manyToMany',
       'api::calendar.calendar'
     >;
+    clubs: Schema.Attribute.Relation<'manyToMany', 'api::club.club'>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
@@ -1795,12 +2106,19 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    events: Schema.Attribute.Relation<'manyToMany', 'api::event.event'>;
+    exhibitions: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::exhibition.exhibition'
+    >;
+    kookmins: Schema.Attribute.Relation<'manyToMany', 'api::kookmin.kookmin'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'plugin::users-permissions.user'
     > &
       Schema.Attribute.Private;
+    notices: Schema.Attribute.Relation<'manyToMany', 'api::notice.notice'>;
     password: Schema.Attribute.Password &
       Schema.Attribute.Private &
       Schema.Attribute.SetMinMaxLength<{
@@ -1838,16 +2156,21 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::calendar.calendar': ApiCalendarCalendar;
       'api::club.club': ApiClubClub;
+      'api::clubs-tag.clubs-tag': ApiClubsTagClubsTag;
       'api::course.course': ApiCourseCourse;
       'api::curriculum.curriculum': ApiCurriculumCurriculum;
       'api::department-introduction.department-introduction': ApiDepartmentIntroductionDepartmentIntroduction;
       'api::double-major-and-minor.double-major-and-minor': ApiDoubleMajorAndMinorDoubleMajorAndMinor;
       'api::event.event': ApiEventEvent;
+      'api::events-tag.events-tag': ApiEventsTagEventsTag;
       'api::exhibition.exhibition': ApiExhibitionExhibition;
+      'api::exhibitions-tag.exhibitions-tag': ApiExhibitionsTagExhibitionsTag;
       'api::facility-overview.facility-overview': ApiFacilityOverviewFacilityOverview;
       'api::graduate-school.graduate-school': ApiGraduateSchoolGraduateSchool;
       'api::graduation-requirement.graduation-requirement': ApiGraduationRequirementGraduationRequirement;
+      'api::kookmin.kookmin': ApiKookminKookmin;
       'api::notice.notice': ApiNoticeNotice;
+      'api::notices-tag.notices-tag': ApiNoticesTagNoticesTag;
       'api::professor.professor': ApiProfessorProfessor;
       'api::staff.staff': ApiStaffStaff;
       'api::student-council.student-council': ApiStudentCouncilStudentCouncil;
