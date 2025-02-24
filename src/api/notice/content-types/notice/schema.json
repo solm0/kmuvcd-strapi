@@ -68,12 +68,6 @@
       "default": "notices",
       "required": true
     },
-    "calendars": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::calendar.calendar",
-      "mappedBy": "notices"
-    },
     "startDate": {
       "pluginOptions": {
         "i18n": {

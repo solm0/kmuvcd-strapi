@@ -68,12 +68,6 @@
       "required": true,
       "default": "clubs"
     },
-    "calendars": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::calendar.calendar",
-      "mappedBy": "clubs"
-    },
     "startDate": {
       "pluginOptions": {
         "i18n": {

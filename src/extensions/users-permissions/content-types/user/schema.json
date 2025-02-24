@@ -65,12 +65,6 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "calendars": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::calendar.calendar",
-      "inversedBy": "users"
-    },
     "realname": {
       "type": "string",
       "required": true

@@ -369,50 +369,6 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiCalendarCalendar extends Struct.CollectionTypeSchema {
-  collectionName: 'calendars';
-  info: {
-    description: '';
-    displayName: 'Calendar';
-    pluralName: 'calendars';
-    singularName: 'calendar';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    clubs: Schema.Attribute.Relation<'manyToOne', 'api::club.club'>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    endDate: Schema.Attribute.Date;
-    events: Schema.Attribute.Relation<'manyToOne', 'api::event.event'>;
-    exhibitions: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::exhibition.exhibition'
-    >;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::calendar.calendar'
-    > &
-      Schema.Attribute.Private;
-    location: Schema.Attribute.String;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    notices: Schema.Attribute.Relation<'manyToOne', 'api::notice.notice'>;
-    publishedAt: Schema.Attribute.DateTime;
-    startDate: Schema.Attribute.Date & Schema.Attribute.Required;
-    tags: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    users: Schema.Attribute.Relation<
-      'manyToMany',
-      'plugin::users-permissions.user'
-    >;
-  };
-}
-
 export interface ApiClubClub extends Struct.CollectionTypeSchema {
   collectionName: 'clubs';
   info: {
@@ -438,7 +394,6 @@ export interface ApiClubClub extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<'\uAD00\uB9AC\uC790'>;
-    calendars: Schema.Attribute.Relation<'oneToMany', 'api::calendar.calendar'>;
     category: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -789,7 +744,6 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<'\uAD00\uB9AC\uC790'>;
-    calendars: Schema.Attribute.Relation<'oneToMany', 'api::calendar.calendar'>;
     category: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -918,7 +872,6 @@ export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<'\uAD00\uB9AC\uC790'>;
-    calendars: Schema.Attribute.Relation<'oneToMany', 'api::calendar.calendar'>;
     category: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -1200,7 +1153,8 @@ export interface ApiGraduationRequirementGraduationRequirement
 export interface ApiKookminKookmin extends Struct.CollectionTypeSchema {
   collectionName: 'kookmins';
   info: {
-    displayName: 'kookmin';
+    description: '';
+    displayName: 'kookmins';
     pluralName: 'kookmins';
     singularName: 'kookmin';
   };
@@ -1281,7 +1235,6 @@ export interface ApiNoticeNotice extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<'\uAD00\uB9AC\uC790'>;
-    calendars: Schema.Attribute.Relation<'oneToMany', 'api::calendar.calendar'>;
     category: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -1586,42 +1539,6 @@ export interface ApiStudentCouncilStudentCouncil
         };
       }>;
     text: Schema.Attribute.RichText &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiTagTag extends Struct.CollectionTypeSchema {
-  collectionName: 'tags';
-  info: {
-    displayName: 'Tag';
-    pluralName: 'tags';
-    singularName: 'tag';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>;
-    publishedAt: Schema.Attribute.DateTime;
-    tag: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -2091,10 +2008,6 @@ export interface PluginUsersPermissionsUser
   };
   attributes: {
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    calendars: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::calendar.calendar'
-    >;
     clubs: Schema.Attribute.Relation<'manyToMany', 'api::club.club'>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
@@ -2154,7 +2067,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::calendar.calendar': ApiCalendarCalendar;
       'api::club.club': ApiClubClub;
       'api::clubs-tag.clubs-tag': ApiClubsTagClubsTag;
       'api::course.course': ApiCourseCourse;
@@ -2174,7 +2086,6 @@ declare module '@strapi/strapi' {
       'api::professor.professor': ApiProfessorProfessor;
       'api::staff.staff': ApiStaffStaff;
       'api::student-council.student-council': ApiStudentCouncilStudentCouncil;
-      'api::tag.tag': ApiTagTag;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

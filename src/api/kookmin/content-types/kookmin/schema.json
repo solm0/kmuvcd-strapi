@@ -4,7 +4,8 @@
   "info": {
     "singularName": "kookmin",
     "pluralName": "kookmins",
-    "displayName": "kookmin"
+    "displayName": "kookmins",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

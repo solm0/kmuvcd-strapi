@@ -34,7 +34,6 @@ export interface EventEvent extends Struct.ComponentSchema {
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     startDate: Schema.Attribute.Date & Schema.Attribute.Required;
-    tags: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>;
   };
 }
 

@@ -68,12 +68,6 @@
       "required": true,
       "default": "events"
     },
-    "calendars": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::calendar.calendar",
-      "mappedBy": "events"
-    },
     "startDate": {
       "pluginOptions": {
         "i18n": {

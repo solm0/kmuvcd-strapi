@@ -68,12 +68,6 @@
       "default": "exhibitions",
       "required": true
     },
-    "calendars": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::calendar.calendar",
-      "mappedBy": "exhibitions"
-    },
     "startDate": {
       "pluginOptions": {
         "i18n": {
