@@ -1200,6 +1200,10 @@ export interface ApiKookminKookmin extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    tags: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::kookmins-tag.kookmins-tag'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1207,6 +1211,36 @@ export interface ApiKookminKookmin extends Struct.CollectionTypeSchema {
       'manyToMany',
       'plugin::users-permissions.user'
     >;
+  };
+}
+
+export interface ApiKookminsTagKookminsTag extends Struct.CollectionTypeSchema {
+  collectionName: 'kookmins_tags';
+  info: {
+    displayName: 'Kookmins-tag';
+    pluralName: 'kookmins-tags';
+    singularName: 'kookmins-tag';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::kookmins-tag.kookmins-tag'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -2081,6 +2115,7 @@ declare module '@strapi/strapi' {
       'api::graduate-school.graduate-school': ApiGraduateSchoolGraduateSchool;
       'api::graduation-requirement.graduation-requirement': ApiGraduationRequirementGraduationRequirement;
       'api::kookmin.kookmin': ApiKookminKookmin;
+      'api::kookmins-tag.kookmins-tag': ApiKookminsTagKookminsTag;
       'api::notice.notice': ApiNoticeNotice;
       'api::notices-tag.notices-tag': ApiNoticesTagNoticesTag;
       'api::professor.professor': ApiProfessorProfessor;

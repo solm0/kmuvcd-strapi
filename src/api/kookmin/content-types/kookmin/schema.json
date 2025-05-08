@@ -54,6 +54,11 @@
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
       "inversedBy": "kookmins"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::kookmins-tag.kookmins-tag"
     }
   }
 }

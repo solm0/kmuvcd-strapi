@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "kookmins_tags",
+  "info": {
+    "singularName": "kookmins-tag",
+    "pluralName": "kookmins-tags",
+    "displayName": "Kookmins-tag"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}
