@@ -69,12 +69,6 @@
       "type": "string",
       "required": true
     },
-    "clubs": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::club.club",
-      "mappedBy": "users"
-    },
     "events": {
       "type": "relation",
       "relation": "manyToMany",
