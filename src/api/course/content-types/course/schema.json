@@ -78,6 +78,14 @@
       },
       "type": "richtext",
       "required": true
+    },
+    "semester": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
     }
   }
 }
