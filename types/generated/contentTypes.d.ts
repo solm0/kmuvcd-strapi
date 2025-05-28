@@ -648,7 +648,6 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
         };
       }>;
     isApproved: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
