@@ -112,6 +112,14 @@
       "type": "boolean",
       "default": true,
       "required": false
+    },
+    "nickname": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }
