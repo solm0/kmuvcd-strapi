@@ -664,7 +664,6 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
       }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
-      Schema.Attribute.Unique &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -809,7 +808,6 @@ export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
       }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
-      Schema.Attribute.Unique &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
