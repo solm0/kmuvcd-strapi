@@ -40,13 +40,12 @@ export interface EventEvent extends Struct.ComponentSchema {
 export interface WebsiteWebsite extends Struct.ComponentSchema {
   collectionName: 'components_website_websites';
   info: {
+    description: '';
     displayName: 'website';
     icon: 'globe';
   };
   attributes: {
-    name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     url: Schema.Attribute.String;
   };
 }

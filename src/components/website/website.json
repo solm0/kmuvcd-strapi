@@ -2,13 +2,14 @@
   "collectionName": "components_website_websites",
   "info": {
     "displayName": "website",
-    "icon": "globe"
+    "icon": "globe",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "name": {
       "type": "string",
-      "unique": true,
+      "unique": false,
       "required": true
     },
     "url": {
