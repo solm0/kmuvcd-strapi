@@ -4,7 +4,7 @@
   "info": {
     "singularName": "department-introduction",
     "pluralName": "department-introductions",
-    "displayName": "학과 소개",
+    "displayName": "소개",
     "description": ""
   },
   "options": {
@@ -26,7 +26,7 @@
       "required": true,
       "default": "학과 소개"
     },
-    "text": {
+    "overview": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -34,6 +34,22 @@
       },
       "type": "richtext",
       "required": true
+    },
+    "mission": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
+    },
+    "curriculum": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
     }
   }
 }

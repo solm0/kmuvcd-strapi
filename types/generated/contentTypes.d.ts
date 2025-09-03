@@ -506,7 +506,7 @@ export interface ApiDepartmentIntroductionDepartmentIntroduction
   collectionName: 'department_introductions';
   info: {
     description: '';
-    displayName: '\uD559\uACFC \uC18C\uAC1C';
+    displayName: '\uC18C\uAC1C';
     pluralName: 'department-introductions';
     singularName: 'department-introduction';
   };
@@ -522,11 +522,23 @@ export interface ApiDepartmentIntroductionDepartmentIntroduction
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    curriculum: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::department-introduction.department-introduction'
     >;
+    mission: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -535,14 +547,14 @@ export interface ApiDepartmentIntroductionDepartmentIntroduction
         };
       }> &
       Schema.Attribute.DefaultTo<'\uD559\uACFC \uC18C\uAC1C'>;
-    publishedAt: Schema.Attribute.DateTime;
-    text: Schema.Attribute.RichText &
+    overview: Schema.Attribute.RichText &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
