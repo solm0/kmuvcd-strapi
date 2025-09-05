@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "club_bulletins",
+  "info": {
+    "singularName": "club-bulletin",
+    "pluralName": "club-bulletins",
+    "displayName": "동아리 게시판"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "required": false,
+      "type": "date"
+    },
+    "club": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::club.club",
+      "inversedBy": "posts"
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "dynamic.text-block",
+        "dynamic.image-block"
+      ]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "circle_bulletins",
+  "info": {
+    "singularName": "circle-bulletin",
+    "pluralName": "circle-bulletins",
+    "displayName": "서클 게시판"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "type": "date"
+    },
+    "circle": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::circle.circle",
+      "inversedBy": "posts"
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "dynamic.text-block",
+        "dynamic.image-block"
+      ]
+    }
+  }
+}

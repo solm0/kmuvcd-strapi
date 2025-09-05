@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "circles",
+  "info": {
+    "singularName": "circle",
+    "pluralName": "circles",
+    "displayName": "서클"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "year": {
+      "type": "integer",
+      "required": true
+    },
+    "semester": {
+      "type": "integer",
+      "required": true
+    },
+    "thumbnail": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "website": {
+      "type": "component",
+      "repeatable": true,
+      "component": "website.website"
+    },
+    "posts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::circle-bulletin.circle-bulletin",
+      "mappedBy": "circle"
+    }
+  }
+}

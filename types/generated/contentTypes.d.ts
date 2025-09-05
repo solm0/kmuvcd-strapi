@@ -369,6 +369,143 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCircleBulletinCircleBulletin
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'circle_bulletins';
+  info: {
+    displayName: '\uC11C\uD074 \uAC8C\uC2DC\uD310';
+    pluralName: 'circle-bulletins';
+    singularName: 'circle-bulletin';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    circle: Schema.Attribute.Relation<'manyToOne', 'api::circle.circle'>;
+    content: Schema.Attribute.DynamicZone<
+      ['dynamic.text-block', 'dynamic.image-block']
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::circle-bulletin.circle-bulletin'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCircleCircle extends Struct.CollectionTypeSchema {
+  collectionName: 'circles';
+  info: {
+    displayName: '\uC11C\uD074';
+    pluralName: 'circles';
+    singularName: 'circle';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::circle.circle'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    posts: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::circle-bulletin.circle-bulletin'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    semester: Schema.Attribute.Integer & Schema.Attribute.Required;
+    thumbnail: Schema.Attribute.Media<'images'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    website: Schema.Attribute.Component<'website.website', true>;
+    year: Schema.Attribute.Integer & Schema.Attribute.Required;
+  };
+}
+
+export interface ApiClubBulletinClubBulletin
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'club_bulletins';
+  info: {
+    displayName: '\uB3D9\uC544\uB9AC \uAC8C\uC2DC\uD310';
+    pluralName: 'club-bulletins';
+    singularName: 'club-bulletin';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    club: Schema.Attribute.Relation<'manyToOne', 'api::club.club'>;
+    content: Schema.Attribute.DynamicZone<
+      ['dynamic.text-block', 'dynamic.image-block']
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::club-bulletin.club-bulletin'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiClubClub extends Struct.CollectionTypeSchema {
+  collectionName: 'clubs';
+  info: {
+    displayName: '\uB3D9\uC544\uB9AC';
+    pluralName: 'clubs';
+    singularName: 'club';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::club.club'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    posts: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::club-bulletin.club-bulletin'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    thumbnail: Schema.Attribute.Media<'images'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    website: Schema.Attribute.Component<'website.website', true>;
+  };
+}
+
 export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
   collectionName: 'courses';
   info: {
@@ -2015,6 +2152,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::circle-bulletin.circle-bulletin': ApiCircleBulletinCircleBulletin;
+      'api::circle.circle': ApiCircleCircle;
+      'api::club-bulletin.club-bulletin': ApiClubBulletinClubBulletin;
+      'api::club.club': ApiClubClub;
       'api::course.course': ApiCourseCourse;
       'api::curriculum.curriculum': ApiCurriculumCurriculum;
       'api::department-introduction.department-introduction': ApiDepartmentIntroductionDepartmentIntroduction;
