@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_entry_units",
+  "info": {
+    "displayName": "unit",
+    "icon": "folder"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "course": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::course.course"
+    },
+    "entries": {
+      "type": "component",
+      "repeatable": true,
+      "component": "entry.entry"
+    }
+  }
+}

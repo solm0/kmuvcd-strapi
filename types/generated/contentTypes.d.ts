@@ -369,6 +369,42 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiArchiveArchive extends Struct.CollectionTypeSchema {
+  collectionName: 'archives';
+  info: {
+    displayName: '\uC544\uCE74\uC774\uBE0C';
+    pluralName: 'archives';
+    singularName: 'archive';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Schema.Attribute.Enumeration<
+      ['solo', 'course', 'group', 'special']
+    >;
+    content: Schema.Attribute.Component<'entry.unit', true> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    endDate: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::archive.archive'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    startDate: Schema.Attribute.Date;
+    thumbnail: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCircleBulletinCircleBulletin
   extends Struct.CollectionTypeSchema {
   collectionName: 'circle_bulletins';
@@ -2152,6 +2188,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::archive.archive': ApiArchiveArchive;
       'api::circle-bulletin.circle-bulletin': ApiCircleBulletinCircleBulletin;
       'api::circle.circle': ApiCircleCircle;
       'api::club-bulletin.club-bulletin': ApiClubBulletinClubBulletin;
