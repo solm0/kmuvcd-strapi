@@ -30,12 +30,6 @@
         "images"
       ]
     },
-    "content": {
-      "type": "component",
-      "repeatable": true,
-      "component": "entry.unit",
-      "required": true
-    },
     "description": {
       "type": "text"
     },
@@ -43,6 +37,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::archive-tag.archive-tag"
+    },
+    "units": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::archive-unit.archive-unit",
+      "mappedBy": "exhibition"
     }
   }
 }

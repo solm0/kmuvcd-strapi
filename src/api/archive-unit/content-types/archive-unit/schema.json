@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "archive_units",
+  "info": {
+    "singularName": "archive-unit",
+    "pluralName": "archive-units",
+    "displayName": "아카이브/소주제",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "description": {
+      "type": "text"
+    },
+    "course": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::course.course",
+      "mappedBy": "exhibitions"
+    },
+    "entries": {
+      "type": "component",
+      "repeatable": true,
+      "component": "entry.entry"
+    },
+    "exhibition": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::archive.archive",
+      "inversedBy": "units"
+    },
+    "grade": {
+      "type": "integer"
+    }
+  }
+}

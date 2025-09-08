@@ -399,6 +399,40 @@ export interface ApiArchiveTagArchiveTag extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiArchiveUnitArchiveUnit extends Struct.CollectionTypeSchema {
+  collectionName: 'archive_units';
+  info: {
+    description: '';
+    displayName: '\uC544\uCE74\uC774\uBE0C/\uC18C\uC8FC\uC81C';
+    pluralName: 'archive-units';
+    singularName: 'archive-unit';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    course: Schema.Attribute.Relation<'oneToMany', 'api::course.course'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    entries: Schema.Attribute.Component<'entry.entry', true>;
+    exhibition: Schema.Attribute.Relation<'manyToOne', 'api::archive.archive'>;
+    grade: Schema.Attribute.Integer;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::archive-unit.archive-unit'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiArchiveArchive extends Struct.CollectionTypeSchema {
   collectionName: 'archives';
   info: {
@@ -411,8 +445,6 @@ export interface ApiArchiveArchive extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    content: Schema.Attribute.Component<'entry.unit', true> &
-      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -432,6 +464,10 @@ export interface ApiArchiveArchive extends Struct.CollectionTypeSchema {
     >;
     thumbnail: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    units: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::archive-unit.archive-unit'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -606,6 +642,10 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    exhibitions: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::archive-unit.archive-unit'
+    >;
     format: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -2196,6 +2236,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::archive-tag.archive-tag': ApiArchiveTagArchiveTag;
+      'api::archive-unit.archive-unit': ApiArchiveUnitArchiveUnit;
       'api::archive.archive': ApiArchiveArchive;
       'api::circle-bulletin.circle-bulletin': ApiCircleBulletinCircleBulletin;
       'api::circle.circle': ApiCircleCircle;

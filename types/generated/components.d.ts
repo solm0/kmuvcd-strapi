@@ -35,20 +35,6 @@ export interface EntryEntry extends Struct.ComponentSchema {
   };
 }
 
-export interface EntryUnit extends Struct.ComponentSchema {
-  collectionName: 'components_entry_units';
-  info: {
-    displayName: 'unit';
-    icon: 'folder';
-  };
-  attributes: {
-    course: Schema.Attribute.Relation<'oneToOne', 'api::course.course'>;
-    description: Schema.Attribute.Text;
-    entries: Schema.Attribute.Component<'entry.entry', true>;
-    title: Schema.Attribute.String;
-  };
-}
-
 export interface EventEvent extends Struct.ComponentSchema {
   collectionName: 'components_event_events';
   info: {
@@ -85,7 +71,6 @@ declare module '@strapi/strapi' {
       'dynamic.image-block': DynamicImageBlock;
       'dynamic.text-block': DynamicTextBlock;
       'entry.entry': EntryEntry;
-      'entry.unit': EntryUnit;
       'event.event': EventEvent;
       'website.website': WebsiteWebsite;
     }
