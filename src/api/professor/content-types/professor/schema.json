@@ -4,7 +4,7 @@
   "info": {
     "singularName": "professor",
     "pluralName": "professors",
-    "displayName": "교수진",
+    "displayName": "학과 소개/교수진",
     "description": ""
   },
   "options": {

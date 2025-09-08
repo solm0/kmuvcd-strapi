@@ -4,7 +4,7 @@
   "info": {
     "singularName": "double-major-and-minor",
     "pluralName": "double-major-and-minors",
-    "displayName": "복/부전공",
+    "displayName": "학과 소개/복수부전공",
     "description": ""
   },
   "options": {
@@ -16,17 +16,6 @@
     }
   },
   "attributes": {
-    "name": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string",
-      "required": true,
-      "unique": false,
-      "default": "복/부전공 안내"
-    },
     "text": {
       "pluginOptions": {
         "i18n": {

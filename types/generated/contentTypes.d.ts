@@ -369,9 +369,40 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiArchiveTagArchiveTag extends Struct.CollectionTypeSchema {
+  collectionName: 'archive_tags';
+  info: {
+    description: '';
+    displayName: '\uC544\uCE74\uC774\uBE0C/\uD0DC\uADF8';
+    pluralName: 'archive-tags';
+    singularName: 'archive-tag';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    important: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::archive-tag.archive-tag'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiArchiveArchive extends Struct.CollectionTypeSchema {
   collectionName: 'archives';
   info: {
+    description: '';
     displayName: '\uC544\uCE74\uC774\uBE0C';
     pluralName: 'archives';
     singularName: 'archive';
@@ -380,14 +411,12 @@ export interface ApiArchiveArchive extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    category: Schema.Attribute.Enumeration<
-      ['solo', 'course', 'group', 'special']
-    >;
     content: Schema.Attribute.Component<'entry.unit', true> &
       Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
     endDate: Schema.Attribute.Date;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -397,6 +426,10 @@ export interface ApiArchiveArchive extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     startDate: Schema.Attribute.Date;
+    tags: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::archive-tag.archive-tag'
+    >;
     thumbnail: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
@@ -409,7 +442,8 @@ export interface ApiCircleBulletinCircleBulletin
   extends Struct.CollectionTypeSchema {
   collectionName: 'circle_bulletins';
   info: {
-    displayName: '\uC11C\uD074 \uAC8C\uC2DC\uD310';
+    description: '';
+    displayName: '\uB3D9\uC544\uB9AC\uC11C\uD074/\uC11C\uD074/\uAC8C\uC2DC\uD310';
     pluralName: 'circle-bulletins';
     singularName: 'circle-bulletin';
   };
@@ -442,7 +476,8 @@ export interface ApiCircleBulletinCircleBulletin
 export interface ApiCircleCircle extends Struct.CollectionTypeSchema {
   collectionName: 'circles';
   info: {
-    displayName: '\uC11C\uD074';
+    description: '';
+    displayName: '\uB3D9\uC544\uB9AC\uC11C\uD074/\uC11C\uD074';
     pluralName: 'circles';
     singularName: 'circle';
   };
@@ -480,7 +515,8 @@ export interface ApiClubBulletinClubBulletin
   extends Struct.CollectionTypeSchema {
   collectionName: 'club_bulletins';
   info: {
-    displayName: '\uB3D9\uC544\uB9AC \uAC8C\uC2DC\uD310';
+    description: '';
+    displayName: '\uB3D9\uC544\uB9AC\uC11C\uD074/\uB3D9\uC544\uB9AC/\uAC8C\uC2DC\uD310';
     pluralName: 'club-bulletins';
     singularName: 'club-bulletin';
   };
@@ -513,7 +549,8 @@ export interface ApiClubBulletinClubBulletin
 export interface ApiClubClub extends Struct.CollectionTypeSchema {
   collectionName: 'clubs';
   info: {
-    displayName: '\uB3D9\uC544\uB9AC';
+    description: '';
+    displayName: '\uB3D9\uC544\uB9AC\uC11C\uD074/\uB3D9\uC544\uB9AC';
     pluralName: 'clubs';
     singularName: 'club';
   };
@@ -546,7 +583,7 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
   collectionName: 'courses';
   info: {
     description: '';
-    displayName: '\uAD50\uACFC\uBAA9';
+    displayName: '\uD559\uACFC \uC18C\uAC1C/\uAC15\uC758 \uBAA9\uB85D';
     pluralName: 'courses';
     singularName: 'course';
   };
@@ -630,7 +667,7 @@ export interface ApiCurriculumCurriculum extends Struct.SingleTypeSchema {
   collectionName: 'curriculums';
   info: {
     description: '';
-    displayName: '\uAD50\uC721\uACFC\uC815';
+    displayName: '\uD559\uACFC \uC18C\uAC1C/\uAC15\uC758 \uBAA9\uB85D/\uC124\uBA85';
     pluralName: 'curriculums';
     singularName: 'curriculum';
   };
@@ -651,15 +688,6 @@ export interface ApiCurriculumCurriculum extends Struct.SingleTypeSchema {
       'oneToMany',
       'api::curriculum.curriculum'
     >;
-    name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Schema.Attribute.DefaultTo<'\uAD50\uC721\uACFC\uC815'>;
     publishedAt: Schema.Attribute.DateTime;
     text: Schema.Attribute.RichText &
       Schema.Attribute.Required &
@@ -679,7 +707,7 @@ export interface ApiDepartmentIntroductionDepartmentIntroduction
   collectionName: 'department_introductions';
   info: {
     description: '';
-    displayName: '\uC18C\uAC1C';
+    displayName: '\uD559\uACFC \uC18C\uAC1C/\uC18C\uAC1C';
     pluralName: 'department-introductions';
     singularName: 'department-introduction';
   };
@@ -712,14 +740,6 @@ export interface ApiDepartmentIntroductionDepartmentIntroduction
           localized: true;
         };
       }>;
-    name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Schema.Attribute.DefaultTo<'\uD559\uACFC \uC18C\uAC1C'>;
     overview: Schema.Attribute.RichText &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -739,7 +759,7 @@ export interface ApiDoubleMajorAndMinorDoubleMajorAndMinor
   collectionName: 'double_major_and_minors';
   info: {
     description: '';
-    displayName: '\uBCF5/\uBD80\uC804\uACF5';
+    displayName: '\uD559\uACFC \uC18C\uAC1C/\uBCF5\uC218\uBD80\uC804\uACF5';
     pluralName: 'double-major-and-minors';
     singularName: 'double-major-and-minor';
   };
@@ -760,14 +780,6 @@ export interface ApiDoubleMajorAndMinorDoubleMajorAndMinor
       'oneToMany',
       'api::double-major-and-minor.double-major-and-minor'
     >;
-    name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Schema.Attribute.DefaultTo<'\uBCF5/\uBD80\uC804\uACF5 \uC548\uB0B4'>;
     publishedAt: Schema.Attribute.DateTime;
     text: Schema.Attribute.RichText &
       Schema.Attribute.Required &
@@ -786,7 +798,7 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
   collectionName: 'events';
   info: {
     description: '';
-    displayName: 'events';
+    displayName: '\uC18C\uC2DD/\uD589\uC0AC';
     pluralName: 'events';
     singularName: 'event';
   };
@@ -887,7 +899,8 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
 export interface ApiEventsTagEventsTag extends Struct.CollectionTypeSchema {
   collectionName: 'events_tags';
   info: {
-    displayName: 'events-tag';
+    description: '';
+    displayName: '\uC18C\uC2DD/\uD589\uC0AC/\uD0DC\uADF8';
     pluralName: 'events-tags';
     singularName: 'events-tag';
   };
@@ -926,7 +939,7 @@ export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
   collectionName: 'exhibitions';
   info: {
     description: '';
-    displayName: 'exhibitions';
+    displayName: '\uC18C\uC2DD/\uC804\uC2DC';
     pluralName: 'exhibitions';
     singularName: 'exhibition';
   };
@@ -1035,7 +1048,8 @@ export interface ApiExhibitionsTagExhibitionsTag
   extends Struct.CollectionTypeSchema {
   collectionName: 'exhibitions_tags';
   info: {
-    displayName: 'exhibitions-tag';
+    description: '';
+    displayName: '\uC18C\uC2DD/\uC804\uC2DC/\uD0DC\uADF8';
     pluralName: 'exhibitions-tags';
     singularName: 'exhibitions-tag';
   };
@@ -1075,7 +1089,7 @@ export interface ApiFacilityOverviewFacilityOverview
   collectionName: 'facility_overviews';
   info: {
     description: '';
-    displayName: '\uC2DC\uC124';
+    displayName: '\uD559\uACFC \uC18C\uAC1C/\uC2DC\uC124';
     pluralName: 'facility-overviews';
     singularName: 'facility-overview';
   };
@@ -1141,7 +1155,7 @@ export interface ApiGraduateSchoolGraduateSchool
   collectionName: 'graduate_schools';
   info: {
     description: '';
-    displayName: '\uB300\uD559\uC6D0';
+    displayName: '\uD559\uACFC \uC18C\uAC1C/\uB300\uD559\uC6D0';
     pluralName: 'graduate-schools';
     singularName: 'graduate-school';
   };
@@ -1194,7 +1208,7 @@ export interface ApiGraduationRequirementGraduationRequirement
   collectionName: 'graduation_requirements';
   info: {
     description: '';
-    displayName: '\uC878\uC5C5 \uC694\uAC74';
+    displayName: '\uD559\uACFC \uC18C\uAC1C/\uC878\uC5C5 \uC694\uAC74';
     pluralName: 'graduation-requirements';
     singularName: 'graduation-requirement';
   };
@@ -1215,15 +1229,6 @@ export interface ApiGraduationRequirementGraduationRequirement
       'oneToMany',
       'api::graduation-requirement.graduation-requirement'
     >;
-    name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Schema.Attribute.DefaultTo<'\uC878\uC5C5 \uC694\uAC74'>;
     publishedAt: Schema.Attribute.DateTime;
     text: Schema.Attribute.RichText &
       Schema.Attribute.Required &
@@ -1242,7 +1247,7 @@ export interface ApiKookminKookmin extends Struct.CollectionTypeSchema {
   collectionName: 'kookmins';
   info: {
     description: '';
-    displayName: 'kookmins';
+    displayName: '\uC18C\uC2DD/\uAD6D\uBBFC\uB300';
     pluralName: 'kookmins';
     singularName: 'kookmin';
   };
@@ -1305,7 +1310,8 @@ export interface ApiKookminKookmin extends Struct.CollectionTypeSchema {
 export interface ApiKookminsTagKookminsTag extends Struct.CollectionTypeSchema {
   collectionName: 'kookmins_tags';
   info: {
-    displayName: 'Kookmins-tag';
+    description: '';
+    displayName: '\uC18C\uC2DD/\uAD6D\uBBFC\uB300/\uD0DC\uADF8';
     pluralName: 'kookmins-tags';
     singularName: 'kookmins-tag';
   };
@@ -1336,7 +1342,7 @@ export interface ApiNoticeNotice extends Struct.CollectionTypeSchema {
   collectionName: 'notices';
   info: {
     description: '';
-    displayName: 'notices';
+    displayName: '\uC18C\uC2DD/\uACF5\uC9C0';
     pluralName: 'notices';
     singularName: 'notice';
   };
@@ -1428,7 +1434,8 @@ export interface ApiNoticeNotice extends Struct.CollectionTypeSchema {
 export interface ApiNoticesTagNoticesTag extends Struct.CollectionTypeSchema {
   collectionName: 'notices_tags';
   info: {
-    displayName: 'notices-tag';
+    description: '';
+    displayName: '\uC18C\uC2DD/\uACF5\uC9C0/\uD0DC\uADF8';
     pluralName: 'notices-tags';
     singularName: 'notices-tag';
   };
@@ -1467,7 +1474,7 @@ export interface ApiProfessorProfessor extends Struct.CollectionTypeSchema {
   collectionName: 'professors';
   info: {
     description: '';
-    displayName: '\uAD50\uC218\uC9C4';
+    displayName: '\uD559\uACFC \uC18C\uAC1C/\uAD50\uC218\uC9C4';
     pluralName: 'professors';
     singularName: 'professor';
   };
@@ -1562,7 +1569,7 @@ export interface ApiStaffStaff extends Struct.CollectionTypeSchema {
   collectionName: 'staffs';
   info: {
     description: '';
-    displayName: '\uAD50\uC9C1\uC6D0';
+    displayName: '\uD559\uACFC \uC18C\uAC1C/\uAD50\uC9C1\uC6D0';
     pluralName: 'staffs';
     singularName: 'staff';
   };
@@ -1624,7 +1631,7 @@ export interface ApiStudentCouncilStudentCouncil
   collectionName: 'student_councils';
   info: {
     description: '';
-    displayName: '\uD559\uC0DD\uD68C';
+    displayName: '\uD559\uACFC \uC18C\uAC1C/\uD559\uC0DD\uD68C';
     pluralName: 'student-councils';
     singularName: 'student-council';
   };
@@ -2188,6 +2195,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::archive-tag.archive-tag': ApiArchiveTagArchiveTag;
       'api::archive.archive': ApiArchiveArchive;
       'api::circle-bulletin.circle-bulletin': ApiCircleBulletinCircleBulletin;
       'api::circle.circle': ApiCircleCircle;

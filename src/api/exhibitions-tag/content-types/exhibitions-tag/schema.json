@@ -4,7 +4,8 @@
   "info": {
     "singularName": "exhibitions-tag",
     "pluralName": "exhibitions-tags",
-    "displayName": "exhibitions-tag"
+    "displayName": "소식/전시/태그",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

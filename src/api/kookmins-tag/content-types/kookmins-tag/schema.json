@@ -4,7 +4,8 @@
   "info": {
     "singularName": "kookmins-tag",
     "pluralName": "kookmins-tags",
-    "displayName": "Kookmins-tag"
+    "displayName": "소식/국민대/태그",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

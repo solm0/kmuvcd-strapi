@@ -4,7 +4,8 @@
   "info": {
     "singularName": "notices-tag",
     "pluralName": "notices-tags",
-    "displayName": "notices-tag"
+    "displayName": "소식/공지/태그",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

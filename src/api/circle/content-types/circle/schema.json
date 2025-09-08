@@ -4,7 +4,8 @@
   "info": {
     "singularName": "circle",
     "pluralName": "circles",
-    "displayName": "서클"
+    "displayName": "동아리서클/서클",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -28,11 +29,12 @@
       "required": true
     },
     "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "website": {
       "type": "component",

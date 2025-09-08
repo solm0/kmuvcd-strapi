@@ -4,7 +4,8 @@
   "info": {
     "singularName": "circle-bulletin",
     "pluralName": "circle-bulletins",
-    "displayName": "서클 게시판"
+    "displayName": "동아리서클/서클/게시판",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

@@ -4,7 +4,7 @@
   "info": {
     "singularName": "course",
     "pluralName": "courses",
-    "displayName": "교과목",
+    "displayName": "학과 소개/강의 목록",
     "description": ""
   },
   "options": {

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "archive",
     "pluralName": "archives",
-    "displayName": "아카이브"
+    "displayName": "아카이브",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -21,28 +22,27 @@
     "endDate": {
       "type": "date"
     },
-    "category": {
-      "type": "enumeration",
-      "enum": [
-        "solo",
-        "course",
-        "group",
-        "special"
-      ]
-    },
     "thumbnail": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "content": {
       "type": "component",
       "repeatable": true,
       "component": "entry.unit",
       "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::archive-tag.archive-tag"
     }
   }
 }

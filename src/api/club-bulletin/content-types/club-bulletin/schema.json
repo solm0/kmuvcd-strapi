@@ -4,7 +4,8 @@
   "info": {
     "singularName": "club-bulletin",
     "pluralName": "club-bulletins",
-    "displayName": "동아리 게시판"
+    "displayName": "동아리서클/동아리/게시판",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
