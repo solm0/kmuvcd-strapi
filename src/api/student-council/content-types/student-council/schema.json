@@ -41,6 +41,16 @@
         }
       },
       "type": "richtext"
+    },
+    "website": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "website.website"
     }
   }
 }
