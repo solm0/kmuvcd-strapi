@@ -89,9 +89,9 @@
     },
     "exhibitions": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::archive-unit.archive-unit",
-      "inversedBy": "course"
+      "inversedBy": "courses"
     }
   }
 }

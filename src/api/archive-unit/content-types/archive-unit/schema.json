@@ -19,12 +19,6 @@
     "description": {
       "type": "text"
     },
-    "course": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::course.course",
-      "mappedBy": "exhibitions"
-    },
     "entries": {
       "type": "component",
       "repeatable": true,
@@ -38,6 +32,12 @@
     },
     "grade": {
       "type": "integer"
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course.course",
+      "mappedBy": "exhibitions"
     }
   }
 }

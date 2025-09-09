@@ -412,7 +412,7 @@ export interface ApiArchiveUnitArchiveUnit extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    course: Schema.Attribute.Relation<'oneToMany', 'api::course.course'>;
+    courses: Schema.Attribute.Relation<'manyToMany', 'api::course.course'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -451,12 +451,14 @@ export interface ApiArchiveArchive extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     endDate: Schema.Attribute.Date;
+    host: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::archive.archive'
     > &
       Schema.Attribute.Private;
+    location: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     startDate: Schema.Attribute.Date;
     tags: Schema.Attribute.Relation<
@@ -644,7 +646,7 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
         };
       }>;
     exhibitions: Schema.Attribute.Relation<
-      'manyToOne',
+      'manyToMany',
       'api::archive-unit.archive-unit'
     >;
     format: Schema.Attribute.String &

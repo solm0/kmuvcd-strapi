@@ -43,6 +43,12 @@
       "relation": "oneToMany",
       "target": "api::archive-unit.archive-unit",
       "mappedBy": "exhibition"
+    },
+    "location": {
+      "type": "string"
+    },
+    "host": {
+      "type": "string"
     }
   }
 }
